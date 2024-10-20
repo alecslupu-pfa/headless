@@ -55,7 +55,7 @@ class Headless
 
     def stop_and_save(path)
       CliUtil.kill_process(@pid_file_path, :wait => true)
-      if File.exists? @tmp_file_path
+      if File.exist? @tmp_file_path
         begin
           FileUtils.mkdir_p(File.dirname(path))
           FileUtils.mv(@tmp_file_path, path)
@@ -77,7 +77,7 @@ class Headless
     private
 
     def guess_the_provider_binary_path
-      @provider== :libav ? 'avconv' : 'ffmpeg'
+      @provider == :libav ? 'avconv' : 'ffmpeg'
     end
 
     def command_line_for_capture
